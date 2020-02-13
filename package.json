@@ -1,0 +1,17 @@
+{
+  "name": "spin_proj",
+  "version": "1.0.0",
+  "description": "",
+  "main": "base.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "path": "^0.12.7",
+    "promisify": "0.0.3",
+    "util": "^0.12.1"
+  }
+}
