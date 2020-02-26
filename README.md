@@ -1,10 +1,10 @@
 ## How to use
 
 1. clone this repo
-2. from within the folder of this repo, run:
+2. from within the folder of this repo, run: <br/>
 
-- `npm install` or `yarn install` based on your dependency manager
-- `node base.js '<PATH/TO/ARTICLES/FILE/DIRECTORY>' '<PATH/TO/SCRIPT/FILE/DIRECTORY>'`
+`npm install` or `yarn install` based on your dependency manager <br/>
+`node base.js '<PATH/TO/ARTICLES/FILE/DIRECTORY>' '<PATH/TO/SCRIPT/FILE/DIRECTORY>'`
 
 - The first argument should be the absolute path to where the articles are located, e.g. `'/Users/username/Desktop/Articles'.`
 - The second argument should be the absolute path to where this script is located, e.g.`'Users/username/Desktop/sp_proj'`
