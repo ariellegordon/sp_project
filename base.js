@@ -20,7 +20,7 @@ const findFiles = async (regex, dir) => {
 const replaceCSS = (files, regex) => {
   files.forEach(file => {
     const filepath = file.path || file;
-    // example of projdir + css '/Users/ariellegordon/Desktop/spin_proj'
+    // example of projdir + css '/Users/username/Desktop/sp_proj'
     const projdir = process.argv[3];
     if (typeof projdir !== 'string') {
       throw new Error('Project directory must be written as a string');
@@ -47,7 +47,7 @@ const replaceCSS = (files, regex) => {
 };
 
 (async () => {
-  // example of homedir '/Users/ariellegordon/Desktop/Authors';
+  // example of homedir '/Users/username/Desktop/Articles';
   const filesdir = process.argv[2];
   if (typeof filesdir !== 'string') {
     throw new Error('Article files directory must be written as a string');
