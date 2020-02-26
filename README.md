@@ -2,7 +2,7 @@
 
 1. clone this repo
 2. from within the folder of this repo, run:
-   `npm install` or `yarn install` based on your dependency manager
+   `npm install` or `yarn install` based on your dependency manager <br/>
    `node base.js '<PATH/TO/ARTICLES/FILE/DIRECTORY>' '<PATH/TO/SCRIPT/FILE/DIRECTORY>'`
 
 - The first argument should be the absolute path to where the articles are located, e.g. `'/Users/username/Desktop/Articles'.`
