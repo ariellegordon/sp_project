@@ -33,7 +33,6 @@ const replaceCSS = (files, regex) => {
         console.log(err);
       }
     );
-    fs.unlinkSync(path.dirname(filepath) + '/newEntry.html');
     const newCode = code
       .split('\n')
       .map(c => c.replace(REGEX, `"style.css" type="text/css"`))
