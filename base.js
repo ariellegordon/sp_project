@@ -7,7 +7,6 @@ const REGEX = /"h.*?.*\/css.*?"/; // find stylesheet lol
 const findFiles = async (regex, dir) => {
   const cmd = `egrep -rn "${regex.source}" ${dir}`;
   const result = await exec(cmd, { maxBuffer: 1024 * 100000000 });
-
   return result.stdout
     .split('\n')
     .filter(line => line.length < 10000 && regex.test(line))
@@ -21,17 +20,25 @@ const findFiles = async (regex, dir) => {
 const replaceCSS = (files, regex) => {
   files.forEach(file => {
     const filepath = file.path || file;
+    // example of projdir + css '/Users/ariellegordon/Desktop/spin_proj'
+    const projdir = process.argv[3];
+    if (typeof projdir !== 'string') {
+      throw new Error('Project directory must be written as a string');
+    }
     const code = fs.readFileSync(filepath, 'utf8');
+    fs.copyFileSync(
+      projdir + '/style.css',
+      path.dirname(filepath) + '/style.css',
+      err => {
+        console.log(err);
+      }
+    );
+    fs.unlinkSync(path.dirname(filepath) + '/newEntry.html');
     const newCode = code
       .split('\n')
-      .map(c =>
-        c.replace(
-          REGEX,
-          `"Users/ariellegordon/Desktop/Authors/style.css" type="text/css"`
-        )
-      )
+      .map(c => c.replace(REGEX, `"style.css" type="text/css"`))
       .join('\n');
-    fs.writeFile('newCode.html', newCode, err => {
+    fs.writeFile(filepath, newCode, err => {
       if (err) {
         console.log(err);
       }
@@ -40,9 +47,11 @@ const replaceCSS = (files, regex) => {
 };
 
 (async () => {
-  let files = await findFiles(
-    REGEX,
-    path.join('/Users/ariellegordon/Desktop', '/Authors')
-  );
+  // example of homedir '/Users/ariellegordon/Desktop/Authors';
+  const filesdir = process.argv[2];
+  if (typeof filesdir !== 'string') {
+    throw new Error('Article files directory must be written as a string');
+  }
+  let files = await findFiles(REGEX, filesdir);
   replaceCSS(files, REGEX);
 })();
